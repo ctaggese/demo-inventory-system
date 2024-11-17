@@ -16,7 +16,7 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping()
-    public Iterable<Order> getAllOrders() {
+    public List<Order> getAllOrders() {
         return this.orderService.getOrders();
     }
 

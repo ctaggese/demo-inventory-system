@@ -1,4 +1,4 @@
-name: Build Order Microservice
+name: order-ms build
 on:
   pull_request:
     branches: [ main ]

@@ -1,0 +1,9 @@
+<p-card header="Simple Card">
+    <p class="m-0">
+        Lorem ipsum dolor sit amet...
+    </p>
+</p-card>
+<p-card *ngFor="let order of orders | async; index as i">
+    {{ i + 1 }}. {{ order.id }}
+<p-card>
+

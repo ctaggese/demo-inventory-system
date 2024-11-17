@@ -52,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Iterable<Order> getOrders() {
-        return orderRepository.findAll();
+    public List<Order> getOrders() {
+        return (List<Order>) orderRepository.findAll();
     }
 }
