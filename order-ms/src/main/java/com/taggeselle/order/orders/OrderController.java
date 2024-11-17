@@ -9,7 +9,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/orders")
+@RequestMapping( path = "api/orders", produces = "application/json")
 public class OrderController {
 
     @Autowired
