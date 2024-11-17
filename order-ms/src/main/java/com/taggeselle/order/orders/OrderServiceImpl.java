@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -48,5 +49,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Optional<Order> getOrderById(Long id) {
         return orderRepository.findById(id);
+    }
+
+    @Override
+    public Iterable<Order> getOrders() {
+        return orderRepository.findAll();
     }
 }

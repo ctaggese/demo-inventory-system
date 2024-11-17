@@ -1,5 +1,13 @@
 name: Deploy to ECR
 
+env:
+  EWS_REGION: eu-north-1
+  EWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  EWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
+  ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
+  ECS_TASK_DEFINITION: spring-boo-app-task-definition
+
 on:
   workflow_dispatch:
 jobs:
@@ -50,3 +58,10 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+    - name: Update Task Definition
+      uses: yumemi-inc/update-ecs-task-definition-action@v1
+      with:
+        family: spring-boo-app-task-definition
+        images: |
+          spring-boot-order-ms=084375582288.dkr.ecr.eu-north-1.amazonaws.com/demo-inventory/order-ms:latest
